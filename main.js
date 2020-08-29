@@ -1,10 +1,40 @@
 var selection = [null, null];
 var events = [
   {
-    title: 'document.querySelector("textarea").value',
+    title: "Tedd Deireadh, The Final Age",
+    type: "Personal",
+    start_date: new Date("8/29/2020, 00:00:00"),
+    end_date: new Date("8/29/2020, 04:30:00"),
+  },
+  {
+    title: "Something Ends, Something Begins",
     type: "Work",
-    start_date: new Date("12/2/2020,00:00:00"),
-    end_date: new Date("12/2/2020,00:30:00"),
+    start_date: new Date("8/29/2020,05:00:00"),
+    end_date: new Date("8/29/2020,06:30:00"),
+  },
+  {
+    title: "Ciri’s Story: The King of the Wolves",
+    type: "general",
+    start_date: new Date("8/29/2020,07:00:00"),
+    end_date: new Date("8/29/2020,09:30:00"),
+  },
+  {
+    title: "A Favor for Radovid",
+    type: "Work",
+    start_date: new Date("8/29/2020,10:00:00"),
+    end_date: new Date("8/29/2020,14:30:00"),
+  },
+  {
+    title: "Skjall’s Grave",
+    type: "General",
+    start_date: new Date("8/29/2020,15:00:00"),
+    end_date: new Date("8/29/2020,16:30:00"),
+  },
+  {
+    title: "The King Is Dead – Long Live the King",
+    type: "Personal",
+    start_date: new Date("8/29/2020,17:00:00"),
+    end_date: new Date("8/29/2020,19:30:00"),
   },
 ];
 
