@@ -1,0 +1,56 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.mainheader {
+    margin: 20px 100px 50px 100px;
+    text-align: center;
+}
+
+.navbar {
+    margin: 20px 100px 0px 100px;
+    display: inline;
+
+}
+
+.date,
+.eventitem {
+    align-content: flex-start;
+    display: inline-block
+}
+
+.date-picker {
+    margin: 10px 10px 10px 10px;
+}
+
+.timebutton {
+    border-radius: 0rem;
+}
+
+.work {
+    background-color: cornflowerblue !important;
+}
+
+.personal {
+    background-color: coral !important;
+}
+
+.general {
+    background-color: cornsilk !important;
+}
+
+.listcontainer {
+    margin: 20px 100px 50px 100px;
+}
+
+.eventrow {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: left;
+
+}
+
+.delete_event {
+    margin-left: auto;
+}

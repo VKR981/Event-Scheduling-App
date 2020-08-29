@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="main.css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+  </head>
+
+  <body>
+    <h2 class="mainheader">Schedule Maker</h2>
+    <div class="navbar">
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Add event
+      </button>
+      <button type="button" class="btn btn-primary clearlist">
+        Clear List
+      </button>
+    </div>
+    <div class="listcontainer">
+      <div class="container-fluid">
+        <ul class="list-group eventslist"></ul>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Enter Event</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label>Event</label>
+                <textarea
+                  class="form-control textarea"
+                  id="event"
+                  type="text"
+                  rows="3"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label>Event type</label>
+                <select
+                  class="form-control eventtype personal"
+                  id="eventtype"
+                  style="width: 200px"
+                >
+                  <option class="personal">Personal</option>
+                  <option class="work">Work</option>
+                  <option class="general">General</option>
+                </select>
+                <div class="datewrapper">
+                  <div class="date-picker">
+                    <span>start date :</span>
+                    <select
+                      class="form-control date day"
+                      style="width: 100px"
+                      id="eventtype"
+                    >
+                      <option selected disabled>Day</option>
+                    </select>
+                    <select
+                      class="form-control date month"
+                      style="width: 100px"
+                      id="eventtype"
+                    >
+                      <option selected disabled>Month</option>
+                      <option>Jan</option>
+                      <option>Feb</option>
+                      <option>Mar</option>
+                      <option>Apr</option>
+                      <option>May</option>
+                      <option>Jun</option>
+                      <option>Jul</option>
+                      <option>Aug</option>
+                      <option>Sep</option>
+                      <option>Oct</option>
+                      <option>Nov</option>
+                      <option>Dec</option>
+                    </select>
+                    <select
+                      class="form-control date year"
+                      style="width: 100px"
+                      id="eventtype"
+                    >
+                      <option selected disabled>Year</option>
+                      <option>2020</option>
+                      <option>2021</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- first time picker -->
+              <label>Pick starting and/or ending time</label>
+              <div class="form-group">
+                <div
+                  class="btn-group-toggle firsttimepicker container-fluid"
+                  data-toggle="buttons"
+                ></div>
+              </div>
+              <!-- first time picker end -->
+
+              <div class="date-picker">
+                <span>end date :</span>
+                <select
+                  class="form-control date day"
+                  style="width: 100px"
+                  id="eventtype"
+                >
+                  <option selected disabled>Day</option>
+                </select>
+                <select
+                  class="form-control date month"
+                  style="width: 100px"
+                  id="eventtype"
+                >
+                  <option selected disabled>Month</option>
+                  <option>Jan</option>
+                  <option>Feb</option>
+                  <option>Mar</option>
+                  <option>Apr</option>
+                  <option>May</option>
+                  <option>Jun</option>
+                  <option>Jul</option>
+                  <option>Aug</option>
+                  <option>Sep</option>
+                  <option>Oct</option>
+                  <option>Nov</option>
+                  <option>Dec</option>
+                </select>
+                <select
+                  class="form-control date year"
+                  style="width: 100px"
+                  id="eventtype"
+                >
+                  <option selected disabled>Year</option>
+                  <option>2020</option>
+                  <option>2021</option>
+                </select>
+              </div>
+              <!-- second time picker -->
+              <label class="secondtimepickertitle"></label>
+              <div class="form-group">
+                <div
+                  class="btn-group-toggle secondtimepicker container-fluid"
+                  data-toggle="buttons"
+                ></div>
+              </div>
+              <!-- second time picker end -->
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary clearmodal">
+              Clear
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary closemodal"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary submitevent">
+              Add Event
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
