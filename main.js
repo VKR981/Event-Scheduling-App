@@ -39,6 +39,17 @@ var events = [
 ];
 
 document.addEventListener("DOMContentLoaded", function () {
+  if (
+    localStorage.getItem("events") !== null &&
+    JSON.parse(localStorage.getItem("events")).length
+  ) {
+    events = JSON.parse(localStorage.getItem("events"));
+
+    for (i = 0; i < events.length; i++) {
+      events[i].start_date = new Date(events[i].start_date);
+      events[i].end_date = new Date(events[i].end_date);
+    }
+  }
   fill_dates();
   addtimepicker(".firsttimepicker");
 
@@ -51,30 +62,67 @@ document.addEventListener("DOMContentLoaded", function () {
   updateshcedule();
 });
 
+//fills day selection tag with appropriate no. of days
+function fill_max_days() {
+  const months = {
+    Jan: 01,
+    Feb: 02,
+    Mar: 03,
+    Apr: 04,
+    May: 05,
+    Jun: 06,
+    Jul: 07,
+    Aug: 08,
+    Sep: 09,
+    Oct: 10,
+    Nov: 11,
+    Dec: 12,
+  };
+  var getDaysInMonth = function (month, year) {
+    // returns last day of month
+    return new Date(year, month, 0).getDate();
+  };
+
+  day = document.querySelectorAll(".day");
+  month = document.querySelectorAll(".month");
+  year = document.querySelectorAll(".year");
+  for (i = 0; i < day.length; i++) {
+    maxdays = getDaysInMonth(months[month[i].value], year[i].value);
+
+    if (maxdays != day[i].length) {
+      day[i].innerHTML = "";
+      for (let j = 1; j <= maxdays; j++) {
+        op = document.createElement("option");
+        op.innerHTML = j;
+
+        day[i].append(op);
+      }
+    }
+  }
+}
 //adds days(1-31) options to <select> and sets default date to todays date
 function fill_dates() {
-  document.querySelectorAll(".day").forEach((day) => {
-    day.innerHTML = "";
-    for (let i = 1; i < 32; i++) {
-      op = document.createElement("option");
-      op.innerHTML = i;
-      day.append(op);
-    }
-  });
-
   date = new Date();
-  document.querySelectorAll(".day").forEach((day) => {
-    day[date.getDate() - 1].setAttribute("selected", "selected");
-  });
+
   document.querySelectorAll(".month").forEach((month) => {
     month[date.getMonth() + 1].setAttribute("selected", "selected");
   });
   document.querySelectorAll(".year").forEach((year) => {
+    for (i = 0; i < 2; i++) {
+      op = document.createElement("option");
+      op.innerHTML = date.getFullYear() + i;
+
+      year.append(op);
+    }
     for (i = 0; i < year.length; i++) {
       if (year[i].innerHTML == date.getFullYear()) {
         year[i].setAttribute("selected", "selected");
       }
     }
+  });
+  fill_max_days();
+  document.querySelectorAll(".day").forEach((day) => {
+    day[date.getDate() - 1].setAttribute("selected", "selected");
   });
 }
 
@@ -105,6 +153,7 @@ function ondatechange() {
     document.querySelector(".secondtimepickertitle").innerHTML =
       "Pick ending time";
   }
+  fill_max_days();
 }
 
 //generates time picker //issue has same index
@@ -211,6 +260,8 @@ function handlesubmit() {
   fill_dates();
   ondatechange();
   selection = [null, null];
+  clearmodal();
+  localStorage.setItem("events", JSON.stringify(events));
 }
 
 //Compares events, used for sorting
@@ -229,6 +280,7 @@ function clearlist() {
   events = [];
   updateshcedule();
   clearmodal();
+  localStorage.setItem("events", JSON.stringify(events));
 }
 
 //Updates/refreshes schedule list
@@ -270,6 +322,7 @@ function delete_event(i) {
   });
   updateshcedule();
   clearmodal();
+  localStorage.setItem("events", JSON.stringify(events));
 }
 
 //get 2 times from <select>

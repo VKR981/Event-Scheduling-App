@@ -54,3 +54,12 @@ body {
 .delete_event {
     margin-left: auto;
 }
+
+
+.icon {
+    cursor: pointer;
+}
+
+.icon:hover {
+    color: #00FF00;
+}
